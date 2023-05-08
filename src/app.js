@@ -4,7 +4,6 @@ const app = express()
 app.use(express.urlencoded({ extended: true }));
 const port = 5000
 
-console.log(productos)
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
