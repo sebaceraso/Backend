@@ -1,0 +1,13 @@
+[
+  {
+    "title": {
+      "title": "pelota 1",
+      "description": "Nike",
+      "price": 20,
+      "thumbnail": "Sin foto",
+      "code": "100",
+      "stock": 10
+    },
+    "id": 1
+  }
+]
