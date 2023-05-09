@@ -1,0 +1,92 @@
+[
+  {
+    "title": "pelota 10",
+    "description": "FF",
+    "price": 110,
+    "thumbnail": "Sin foto",
+    "code": "109",
+    "stock": 10,
+    "id": 1
+  },
+  {
+    "title": "pelota 10",
+    "description": "FF",
+    "price": 110,
+    "thumbnail": "Sin foto",
+    "code": "119",
+    "stock": 10,
+    "id": 2
+  },
+  {
+    "title": "pelota 10",
+    "description": "FF",
+    "price": 110,
+    "thumbnail": "Sin foto",
+    "code": "29",
+    "stock": 10,
+    "id": 3
+  },
+  {
+    "title": "pelota 10",
+    "description": "FF",
+    "price": 110,
+    "thumbnail": "Sin foto",
+    "code": "239",
+    "stock": 10,
+    "id": 4
+  },
+  {
+    "title": "pelota 10",
+    "description": "FF",
+    "price": 110,
+    "thumbnail": "Sin foto",
+    "code": "302",
+    "stock": 10,
+    "id": 5
+  },
+  {
+    "title": "pelota 10",
+    "description": "FF",
+    "price": 110,
+    "thumbnail": "Sin foto",
+    "code": "123",
+    "stock": 10,
+    "id": 6
+  },
+  {
+    "title": "pelota 10",
+    "description": "FF",
+    "price": 110,
+    "thumbnail": "Sin foto",
+    "code": "321",
+    "stock": 10,
+    "id": 7
+  }
+]  {
+    "title": "pelota 10",
+    "description": "FF",
+    "price": 110,
+    "thumbnail": "Sin foto",
+    "code": "346",
+    "stock": 10,
+    "id": 8
+  },
+  {
+    "title": "pelota 10",
+    "description": "FF",
+    "price": 110,
+    "thumbnail": "Sin foto",
+    "code": "166",
+    "stock": 10,
+    "id": 9
+  },
+  {
+    "title": "pelota 10",
+    "description": "FF",
+    "price": 110,
+    "thumbnail": "Sin foto",
+    "code": "128",
+    "stock": 10,
+    "id": 10
+  }
+]

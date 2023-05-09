@@ -1,18 +1,33 @@
 const express = require('express')
+const ProductManager = require(".productManager.js");
+const container = new ProductManager("./products.json");
 
-const app = express()
+const app = express();
+const PORT = 8080;
+
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-const port = 5000
 
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+app.get('/productos', async (req, res) => {
+  const limit = req.query.limit;
+  const products = await container.getProduct();
+  if(limit){
+    res.json(products.slice(0, limit));
+  } else {
+    res.json(products);
+  }
+  
+});
 
-app.get('/producto/:id', (req, res) => {
+app.get('/productos/:id', async (req, res) => {
   const id_producto = req.params.id;
-  // Aquí se puede utilizar el ID del producto para buscar información en una base de datos u otra fuente de datos
-  res.send(`Mostrando información del producto con ID ${id_producto}`);
+  const product = await container.getProductById(parseInt(id))
+  if(product) {
+    res.json(product);
+  } else {
+    res.json({error: "Producto no encontrado"})
+  }
 });
 
 app.listen(port, () => {

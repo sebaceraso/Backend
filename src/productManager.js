@@ -95,5 +95,16 @@ class ProductManager {
   };
 }
 
-const productManager = new ProductManager("productos.json");
+const productManager = new ProductManager("./src/productos.json");
 productManager.addProduct("pelota 10", "FF", 110, "Sin foto", "109", 10);
+productManager.addProduct("pelota 10", "FF", 110, "Sin foto", "119", 10);
+productManager.addProduct("pelota 10", "FF", 110, "Sin foto", "29", 10);
+productManager.addProduct("pelota 10", "FF", 110, "Sin foto", "239", 10);
+productManager.addProduct("pelota 10", "FF", 110, "Sin foto", "302", 10);
+productManager.addProduct("pelota 10", "FF", 110, "Sin foto", "123", 10);
+productManager.addProduct("pelota 10", "FF", 110, "Sin foto", "321", 10);
+productManager.addProduct("pelota 10", "FF", 110, "Sin foto", "346", 10);
+productManager.addProduct("pelota 10", "FF", 110, "Sin foto", "166", 10);
+productManager.addProduct("pelota 10", "FF", 110, "Sin foto", "128", 10);
+
+module.exports = ProductManager;
