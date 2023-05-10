@@ -2,63 +2,66 @@ const fs = require("fs");
 
 class ProductManager {
   constructor(path) {
-    this.path = path;
-    this.products = [];
-    this.id = 0;
+    this.path = path
+  }
+  //FUNCION PARA LEER LA INFORMACION
+  async getProducts() {
+    try {
+      if (fs.existsSync(this.path)) {
+        const data = await fs.promises.readFile(this.path, "utf-8");
+        console.log(data);
+        return JSON.parse(data);
+      }
+      await fs.promises.writeFile(this.path, JSON.stringify([]));
+      return [];
+    } catch (error) {
+        throw (error);
+    }
   }
 
-  addProduct = async (title, description, price, thumbnail, code, stock) => {
-    if (!title && !description && !price && !thumbnail && !stock && !code) {
-      console.error("Le falto agregar un dato del producto");
-      return;
-    }
-
-    const codes = this.products.map((product) => product.code);
-
-    if (codes.includes(code)) {
-      console.error(`Codigo existente ${code}`);
-      return;
-    }
-
-    this.products.push({
-      title,
-      description,
-      price,
-      thumbnail,
-      code,
-      stock,
-      id: ++this.id,
-    });
-
-    return await fs.promises.writeFile(
-      this.path,
-      JSON.stringify(this.products, null, 2)
-    );
-  };
-
-  getProducts = async () => {
+  async addProduct(product) {
     try {
-      let productString = await fs.promises.readFile(this.path, "utf-8");
-      let products = JSON.parse(productString);
-      console.log(products);
-      return products;
-    } catch (err) {
-      throw err;
-    }
-  };
-
-  getProductsById = async (idProduct) => {
-    try {
-      const products = await this.getProducts();
-      const getId = products.find((product) => product.id === idProduct);
-      console.log(getId);
-      return getId;
+      let data = await this.getProducts();
+      const searchCode = data.find((p) => p.code === product.code);
+      if (searchCode) {
+        return "Este codigo ya existe";
+      }
+      if (
+        !product.title ||
+        !product.description ||
+        !product.price ||
+        !product.thumbnail ||
+        !product.code ||
+        !product.stock
+      ) {
+        return "Algun campo esta incompleto";
+      }
+      let id;
+      data.length > 0 ? id=data[data.length - 1].id + 1 : id=1;
+      product = { id, ...product};
+      data.push(product);
+      const productString = JSON.stringify(data, null, 2);
+      await fs.promises.writeFile(this.path, productString);
+      return product;
     } catch (error) {
-      throw error;
+        console.error(error);
     }
-  };
+  }
 
-  updateProduct = async (id, update) => {
+  async getProductsById(id) {
+    try {
+      let data = await this.getProducts();
+      const productFound = data.find((product) => product.id === id);
+      if (!productFound) {
+        throw new Error("Producto no encontrado");
+      }
+      return productFound;
+    } catch (e) {
+      throw new Error(e.message);
+    }
+  }
+
+  async updateProduct(id, update) {
     try {
       const products = await this.getProducts();
       const index = products.findIndex((product) => product.id === id);
@@ -72,22 +75,22 @@ class ProductManager {
 
       const data = JSON.stringify(products, null, 2);
       await fs.promises.writeFile(this.path, data);
-    } catch (err) {
-      throw err;
+    } catch (error) {
+      throw new Error(error);
     }
   };
 
   deleteProduct = async (id) => {
     try {
-      const products = await this.getProducts();
-      const index = products.findIndex((product) => product.id === id);
+        let data = await this.getProducts();
+      const index = data.findIndex((product) => product.id === id);
 
       if (index === -1) {
         throw new error("no se encuentra el id " + id);
       }
 
-      products.splice(index, 1);
-      const data = JSON.stringify(products, null, 2);
+      data.splice(index, 1);
+      data = JSON.stringify(data, null, 2);
       await fs.promises.writeFile(this.path, data);
     } catch (err) {
       console.log(err);
@@ -95,16 +98,103 @@ class ProductManager {
   };
 }
 
-const productManager = new ProductManager("./src/productos.json");
-productManager.addProduct("pelota 10", "FF", 110, "Sin foto", "109", 10);
-productManager.addProduct("pelota 10", "FF", 110, "Sin foto", "119", 10);
-productManager.addProduct("pelota 10", "FF", 110, "Sin foto", "29", 10);
-productManager.addProduct("pelota 10", "FF", 110, "Sin foto", "239", 10);
-productManager.addProduct("pelota 10", "FF", 110, "Sin foto", "302", 10);
-productManager.addProduct("pelota 10", "FF", 110, "Sin foto", "123", 10);
-productManager.addProduct("pelota 10", "FF", 110, "Sin foto", "321", 10);
-productManager.addProduct("pelota 10", "FF", 110, "Sin foto", "346", 10);
-productManager.addProduct("pelota 10", "FF", 110, "Sin foto", "166", 10);
-productManager.addProduct("pelota 10", "FF", 110, "Sin foto", "128", 10);
+
+const product1 = {
+  title: "pelota 10",
+  description: "FF",
+  price: 110,
+  thumbnail: "Sin foto",
+  code: "109",
+  stock: 10,
+};
+const product2 = {
+  title: "pelota 1",
+  description: "Nike",
+  price: 20,
+  thumbnail: "Sin foto",
+  code: "100",
+  stock: 10,
+};
+const product3 = {
+  title: "pelota 2",
+  description: "Adidas",
+  price: 30,
+  thumbnail: "Sin foto",
+  code: "101",
+  stock: 10,
+};
+const product4 = {
+  title: "pelota 3",
+  description: "Fila",
+  price: 40,
+  thumbnail: "Sin foto",
+  code: "102",
+  stock: 10,
+};
+const product5 = {
+  title: "pelota 4",
+  description: "Umbro",
+  price: 50,
+  thumbnail: "Sin foto",
+  code: "103",
+  stock: 10,
+};
+const product6 = {
+  title: "pelota 5",
+  description: "Drumond",
+  price: 60,
+  thumbnail: "Sin foto",
+  code: "104",
+  stock: 10,
+};
+const product7 = {
+  title: "pelota 6",
+  description: "Montagne",
+  price: 70,
+  thumbnail: "Sin foto",
+  code: "105",
+  stock: 10,
+};
+const product8 = {
+  title: "pelota 7",
+  description: "Puma",
+  price: 80,
+  thumbnail: "Sin foto",
+  code: "106",
+  stock: 10,
+};
+const product9 = {
+  title: "pelota 8",
+  description: "NB",
+  price: 90,
+  thumbnail: "Sin foto",
+  code: "107",
+  stock: 10,
+};
+const product10 = {
+  title: "pelota 9",
+  description: "JK",
+  price: 100,
+  thumbnail: "Sin foto",
+  code: "108",
+  stock: 10,
+};
+
+const productsManager = new ProductManager("./src/products.json");
+async function productInteraction () {
+    // console.log(await productsManager.addProduct(product1));
+    // console.log(await productsManager.addProduct(product2));
+    // console.log(await productsManager.addProduct(product3));
+    // console.log(await productsManager.addProduct(product4));
+    // console.log(await productsManager.addProduct(product5));
+    // console.log(await productsManager.addProduct(product6));
+    // console.log(await productsManager.addProduct(product7));
+    // console.log(await productsManager.addProduct(product8));
+    // console.log(await productsManager.addProduct(product9));
+    // console.log(await productsManager.addProduct(product10));
+    //console.log(await productsManager.deleteProduct(4));
+}
+
+productInteraction();
 
 module.exports = ProductManager;
