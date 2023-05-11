@@ -1,6 +1,6 @@
-const fs = require("fs");
+import fs from "fs";
 
-class ProductManager {
+export class ProductManager {
   constructor(path) {
     this.path = path
   }
@@ -180,8 +180,8 @@ const product10 = {
   stock: 10,
 };
 
-const productsManager = new ProductManager("./src/products.json");
-async function productInteraction () {
+// const productsManager = new ProductManager("./src/products.json");
+// async function productInteraction () {
     // console.log(await productsManager.addProduct(product1));
     // console.log(await productsManager.addProduct(product2));
     // console.log(await productsManager.addProduct(product3));
@@ -193,8 +193,6 @@ async function productInteraction () {
     // console.log(await productsManager.addProduct(product9));
     // console.log(await productsManager.addProduct(product10));
     //console.log(await productsManager.deleteProduct(4));
-}
+//}
 
-productInteraction();
-
-module.exports = ProductManager;
+// productInteraction();

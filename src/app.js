@@ -1,12 +1,13 @@
-const express = require('express');
-const productsRouters = require("./routes/routes.products");
+import  express  from "express";
+import { productsRouter } from "./routes/routes.products.js";
+
 
 const app = express();
 const PORT = 8080;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use("/api/products", productsRouters)
+app.use("/api/products", productsRouter)
 
 app.get("*", (req, res) => {
   res.status(404).json ({

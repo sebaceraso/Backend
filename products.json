@@ -88,5 +88,41 @@
     "thumbnail": "Sin foto",
     "code": "102",
     "stock": 10
+  },
+  {
+    "id": 12,
+    "title": "pelota 34",
+    "description": "FF",
+    "price": 110,
+    "thumbnail": "Sin foto",
+    "code": "187",
+    "stock": 10
+  },
+  {
+    "id": 13,
+    "title": "zapa 34",
+    "description": "FF",
+    "price": 110,
+    "thumbnail": "Sin foto",
+    "code": "444",
+    "stock": 10
+  },
+  {
+    "id": 45,
+    "title": "zapa 34",
+    "description": "FF",
+    "price": 110,
+    "thumbnail": "Sin foto",
+    "code": "41114",
+    "stock": 10
+  },
+  {
+    "id": 324,
+    "title": "zapa 34",
+    "description": "FF",
+    "price": 110,
+    "thumbnail": "Sin foto",
+    "code": "111111",
+    "stock": 10
   }
 ]
