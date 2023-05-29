@@ -1,0 +1,83 @@
+[
+  {
+    "id": 1,
+    "title": "Mi Smart Band 7",
+    "description": "Xiaomi, malla negra",
+    "price": 110,
+    "thumbnail": "Sin foto",
+    "code": "100",
+    "stock": 10
+  },
+  {
+    "id": 2,
+    "title": "W26",
+    "description": "Microwear, malla rosa",
+    "price": 20,
+    "thumbnail": "Sin foto",
+    "code": "101",
+    "stock": 10
+  },
+  {
+    "id": 3,
+    "title": "Zl02d",
+    "description": "OEM",
+    "price": 30,
+    "thumbnail": "Sin foto",
+    "code": "102",
+    "stock": 10
+  },
+  {
+    "id": 5,
+    "title": "W26+ PLUS",
+    "description": "Microwear, malla negra ",
+    "price": 50,
+    "thumbnail": "Sin foto",
+    "code": "104",
+    "stock": 10
+  },
+  {
+    "id": 6,
+    "title": "Futurefit Ultra 2",
+    "description": "HiFuture",
+    "price": 60,
+    "thumbnail": "Sin foto",
+    "code": "105",
+    "stock": 10
+  },
+  {
+    "id": 7,
+    "title": "NT03",
+    "description": "Nictom, malla blanca",
+    "price": 70,
+    "thumbnail": "Sin foto",
+    "code": "106",
+    "stock": 10
+  },
+  {
+    "id": 8,
+    "title": "Forerunner 55",
+    "description": "Garmin",
+    "price": 80,
+    "thumbnail": "Sin foto",
+    "code": "107",
+    "stock": 10
+  },
+  {
+    "id": 9,
+    "title": "Andina",
+    "description": "JD",
+    "price": 90,
+    "thumbnail": "Sin foto",
+    "code": "108",
+    "stock": 10
+  },
+  {
+    "id": 10,
+    "title": "CF80",
+    "description": "Genérica",
+    "price": 100,
+    "thumbnail": "Sin foto",
+    "code": "109",
+    "stock": 10
+  }
+]
