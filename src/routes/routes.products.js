@@ -1,5 +1,7 @@
 import express from "express";
 import { ProductManager } from "../productManager.js";
+import { uploader } from "../utils.js";
+
 
 const productManager = new ProductManager("products.json");
 export const productsRouter = express.Router();
@@ -32,9 +34,10 @@ productsRouter.get("/:pid", async (req, res) => {
   }
 });
 
-productsRouter.post("/", async (req, res) => {
+productsRouter.post("/", uploader.single("file"), async (req, res) => {  
   try {
     const producto = req.body; //el front me va a dar el nuevo producto
+    producto.picture = req.file.filename;
     const products = await productManager.getProducts();
     const code = products.find((codi) => codi.code === producto.code);
     if (producto.id) {
@@ -47,7 +50,7 @@ productsRouter.post("/", async (req, res) => {
     if (code) {
       return res.status(400).json({
         status: "error",
-        msg: "Ese codigo ya exite pipi",
+        msg: "Ese codigo ya existe pipi",
       });
     }
     if (
@@ -62,6 +65,7 @@ productsRouter.post("/", async (req, res) => {
         msg: "Producto no generado porque falta completar un campo",
       });
     }
+    
     const crearProducto = await productManager.addProduct({
       ...producto,
       status: true,
@@ -124,7 +128,7 @@ productsRouter.delete("/:pid", async (req, res) => {
     //Si el producto no existe
     return res.status(404).json({
       status: "error",
-      msg: "Producto no encontrado",
+      msg: "Algo salio mal",
     });
   }
 });

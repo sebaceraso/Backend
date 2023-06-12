@@ -1,0 +1,52 @@
+<div>
+    <h1>Ecommerce</h1>
+    <h2>Productos</h2>
+</div>
+<div>
+    {{#each products}}
+        <div class="card m-2" style="width: 18rem;">
+            <img src={{this.thumbnail}} class="card-img-top" alt={{this.title}}>
+            <div class="card-body">
+                <h5 class="card-title">{{this.title}}</h5>
+                <p class="card-text">{{this.description}}</p>
+                <p class="card-text">Precio: {{this.price}}</p>
+                <p class="card-text">Codigo: {{this.code}}</p>
+                <p class="card-text">Stock: {{this.stock}}</p>
+                <button class="btn btn-danger d-grid gap-2 col-6 mx-auto" id="btn-delete" onclick="deleteProduct({{this.id}})">Borrar</button>
+            </div>
+        </div>
+    {{/each}}
+</div>
+
+
+<div>
+ <h1>Formulario de Productos</h1>
+    <form id="product-form">
+        <label for="price">Thumbnail</label>
+        <input type="number" id="price" name="thumbnail">
+
+        <label for="title">Título:</label>
+        <input type="text" id="title" name="title">
+
+        <label for="price">Precio:</label>
+        <input type="number" id="price" name="price">
+
+        <label for="description">Descripción:</label>
+        <textarea id="description" name="description"></textarea>
+
+        <label for="code">Código:</label>
+        <input type="text" id="code" name="code">
+
+        <label for="stock">Stock:</label>
+        <input type="number" id="stock" name="stock">
+
+        <input type="submit" value="Guardar">
+    </form>
+</div>
+
+
+
+<!--Estos script copiarlos en otros proyectos -->
+<script src="/socket.io/socket.io.js"></script> 
+<script src="/js/index.js"></script>
+
